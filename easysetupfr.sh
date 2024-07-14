@@ -2,10 +2,14 @@
 
 # Update package list and upgrade existing packages
 sudo apt update && sudo apt upgrade -y
-sudo apt-get install software-properties-common -y
+sudo apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
 sudo apt install wget -y
 sudo apt install curl -y
 sudo apt install git -y
+sudo apt -y install php8.1 php8.1-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+yes | curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+yes | curl -sSL https://get.docker.com/ | CHANNEL=stable bash
 
 # Add fastfetch repository and install with automatic yes
 yes | sudo add-apt-repository ppa:zhangsongcui3371/fastfetch

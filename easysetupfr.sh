@@ -24,7 +24,7 @@ display_tech_fact
 sudo apt update -qq && sudo apt upgrade -y -qq
 
 echo "Installing required packages..."
-sudo apt install -y -qq software-properties-common curl apt-transport-https ca-certificates gnupg wget git php8.1 php8.1-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip redis-server
+sudo apt install -y -qq software-properties-common curl apt-transport-https ca-certificates gnupg wget git php8.1 php8.1-{common,cli,gd,,mbstring,bcmath,xml,fpm,curl,zip} nginx tar unzip redis-server
 
 echo "Installing Composer..."
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer >/dev/null 2>&1

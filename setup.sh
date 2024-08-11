@@ -56,36 +56,9 @@ echo "Installing Starship prompt..."
 display_tech_fact
 curl -sS https://starship.rs/install.sh | sudo sh -s -- -y >/dev/null 2>&1
 
-echo "Preparing for GitHub CLI login..."
-echo "Now we'll log you into GitHub CLI using a device code."
-echo "Please follow these steps:"
-echo "1. You'll see a URL and a device code below."
-echo "2. Copy the URL and open it in a browser on your local machine (not on the VPS)."
-echo "3. Enter the device code on that GitHub page in your browser."
-echo "4. Grant the necessary permissions."
-echo "5. Return here and press Enter once you've completed the authentication in your browser."
-echo ""
-echo "Press Enter to start the login process."
-read
-
-AUTH_OUTPUT=$(gh auth login --web -h github.com -s repo,read:org -p https)
-AUTH_URL=$(echo "$AUTH_OUTPUT" | grep -oP 'https://github\.com/login/device\S+')
-CODE=$(echo "$AUTH_OUTPUT" | grep -oP '(?<=code: )[A-Z0-9-]+')
-echo "Open this URL in your browser: $AUTH_URL"
-echo "Your one-time code is: $CODE"
-echo "Press Enter after you've completed the authentication in your browser."
-read
-
-if gh auth status &>/dev/null; then
-    echo "GitHub CLI login successful!"
-else
-    echo "GitHub CLI login failed. Please try running the script again."
-    exit 1
-fi
-
 echo "Cloning your bash files repository..."
 display_tech_fact
-gh repo clone kustys/my-bash-files ~/my-bash-files >/dev/null 2>&1
+git clone https://github.com/Kustys/my-bash-files.git
 
 echo "Setting up bash configuration files..."
 rm -f ~/.bashrc ~/.bash_aliases

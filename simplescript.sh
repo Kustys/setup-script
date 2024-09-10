@@ -6,10 +6,6 @@ sudo apt update -qq && sudo apt upgrade -y -qq
 echo "Installing required packages..."
 sudo apt install -y -qq software-properties-common curl apt-transport-https ca-certificates gnupg wget tar unzip certbot
 
-#echo "Installing Docker..."
-#display_tech_fact
-#curl -sSL https://get.docker.com/ | CHANNEL=stable bash >/dev/null 2>&1
-
 echo "Installing Fastfetch..."
 sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch >/dev/null 2>&1
 sudo apt update -qq && sudo apt upgrade -y -qq && sudo apt install -y -qq fastfetch

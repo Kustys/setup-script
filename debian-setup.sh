@@ -8,13 +8,15 @@ sudo apt install software-properties-common curl apt-transport-https ca-certific
 
 #curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer >/dev/null 2>&1
 
-#LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >/dev/null 2>&1
+# echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list 2>&1
+# curl -fsSL https://packages.sury.org/php/apt.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg 2>&1
 
 #display_tech_fact
 #curl -sSL https://get.docker.com/ | CHANNEL=stable bash >/dev/null 2>&1
 
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.21.1/fastfetch-linux-amd64.deb
 dpkg -i fastfetch-linux-amd64.deb
+rm fastfetch-linux-amd64.deb
 
 sudo apt autoremove -y -qq
 sudo apt clean -y -qq
